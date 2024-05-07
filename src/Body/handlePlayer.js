@@ -54,14 +54,18 @@ function createOrg(player, orgName) {
         };
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const a = new handleData_1.HandleData();
-        a.addOrg(orgdata);
-        const b = playerData_1.playerData.get(player.xuid);
-        if (b.indexOf(orgdata.uuid) === -1) {
-            b.push(orgdata.uuid);
-            playerData_1.playerData.set(player.xuid, b);
+        if ((0, Economic_1.reduceMoney)(player, config_1.Conf.Normal.cteateMoney)) {
+            a.addOrg(orgdata);
+            const b = playerData_1.playerData.get(player.xuid);
+            if (b.indexOf(orgdata.uuid) === -1) {
+                b.push(orgdata.uuid);
+                playerData_1.playerData.set(player.xuid, b);
+            }
+            player.tell((0, signal_1.XYMessage)("CreateOrgSuccess", config_1.Conf.language));
         }
-        player.tell((0, signal_1.XYMessage)("CreateOrgSuccess", config_1.Conf.language));
-        (0, Economic_1.reduceMoney)(player, config_1.Conf.Normal.cteateMoney);
+        else {
+            player.tell((0, signal_1.XYMessage)("NotEnoughMoney", config_1.Conf.language));
+        }
     }
     catch (error) {
         logger.error(error);
