@@ -507,17 +507,14 @@ function ManagerForm(player, uuid) {
                 else if (mount < 0) {
                     mount = Math.abs(mount);
                     org.updateData();
-                    if (orgdata.manager.cpf < mount) {
-                        log(3);
+                    if (org.cpf < mount) {
                         pl.tell((0, signal_1.XYMessage)("CpfFormInputNotEnough", lang));
                         return;
                     }
                     if ((0, Economic_1.addmoney)(pl, mount)) {
-                        log(1);
                         org.reduceCpf(mount);
                     }
                     else {
-                        log(2);
                         pl.tell((0, signal_1.XYMessage)("CpfFormInputNotEnough", lang));
                     }
                 }
