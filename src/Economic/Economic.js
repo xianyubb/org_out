@@ -56,7 +56,7 @@ function reduceMoney(player, amount) {
         if (Score) {
             try {
                 const old = Score.getScore(player);
-                if (Score.addScore(player, amount) >= old + amount) {
+                if (Score.reduceScore(player, amount) <= old - amount) {
                     player.tell((0, signal_1.XYMessage)("ReduceMoneySuccess", config_1.Conf.language, amount));
                     return true;
                 }

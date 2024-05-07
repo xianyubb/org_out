@@ -52,7 +52,6 @@ function createOrg(player, orgName) {
             },
             applyList: []
         };
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const a = new handleData_1.HandleData();
         if ((0, Economic_1.reduceMoney)(player, config_1.Conf.Normal.cteateMoney)) {
             a.addOrg(orgdata);
